@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	var rowString = $("#movie-row").html();
 	var buildResultTable = _.template(rowString);
+	var watchString = $("#watch-row").html();
+	var buildWatchTable = _.template(watchString);
 	var App = Backbone.Router.extend({
 		routes:{
 			"":     			 "home",
@@ -42,7 +44,18 @@ $(document).ready(function(){
 			$(".page").hide();
 			$("#watch").fadeIn(3000);
 			$("#watchBtn").hide();
-
+			$(".remove-me").click(function(e){
+				selection = $(this).attr("data-position");
+				watchList.splice(selection, 1);
+				$("li").remove();
+				for(var w = 0; w < watchList.length; w++){
+					var wat = watchList[w];
+					wat.pos = w;
+					var table = buildWatchTable(wat);
+		 			$("#watch-list").append(table);
+				}
+				console.log(selection);
+			});
 		}
 	});
 
@@ -110,7 +123,7 @@ $(document).ready(function(){
 		for(var w = 0; w < watchList.length; w++){
 			var wat = watchList[w];
 			wat.pos = w;
-			var table = buildResultTable(wat);
+			var table = buildWatchTable(wat);
 	 		$("#watch-list").append(table);
 		}
  	});

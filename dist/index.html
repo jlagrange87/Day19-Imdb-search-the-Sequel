@@ -33,14 +33,18 @@
 		</section>
 		<button id="watchBtn"class="btn"><a href="#watch">Watch List</a></button>
 	</main>
-
-		<script type="text/template" id="movie-row">
-				<li data-position="<%= pos %>">
-					<b>Title:</b> <%= Title %>
-					|| <b>Year:  </b> <%= Year %>
-				</li>
-		</script>
-
+	<script type="text/template" id="movie-row">
+		<li data-position="<%= pos %>">
+			<b>Title:</b> <%= Title %>
+			|| <b>Year:  </b> <%= Year %>
+		</li>
+	</script>
+	<script type="text/template" id="watch-row">
+		<li class="remove-me" data-position="<%= pos %>">
+			<b>Title:</b> <%= Title %>
+			|| <b>Year:  </b> <%= Year %>
+		</li>
+	</script>
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
 	<script type="text/javascript" src="bower_components/backbone/backbone-min.js"></script>
