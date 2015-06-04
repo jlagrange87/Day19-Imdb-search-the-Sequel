@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	var rowString = $("#movie-row").html();
 	var buildResultTable = _.template(rowString);
+	var rowStringGray = $("#movie-row-grayed").html();
+	var buildResultTableGray = _.template(rowStringGray);
 	var watchString = $("#watch-row").html();
 	var buildWatchTable = _.template(watchString);
 	var App = Backbone.Router.extend({
@@ -84,6 +86,7 @@ $(document).ready(function(){
 			var mov = movies.Search[i];
 			mov.pos = i
 			var table = buildResultTable(mov);
+			var tableGray = buildResultTableGray(mov);
 			grayedOut= _.find(watchList, function(m){
 				if(m.imdbID === movies.Search[i].imdbID){
 					return true;
@@ -96,7 +99,7 @@ $(document).ready(function(){
 				$("#results").append(table);
 			}
 			else{
-				$("#results").append(table);
+				$("#results").append(tableGray);
 			}
 			movieList.push(movies.Search[i]);
 		}
